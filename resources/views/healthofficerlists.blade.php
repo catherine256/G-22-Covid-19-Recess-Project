@@ -32,6 +32,30 @@
 </div>
 
 <div style="margin-left:25%">
-
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h1 style="text-align:center">COVID-19 HEALTH OFFICER </h1> <br>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-success" href="registerhealthofficer" title="register new officer"> <i class="fas fa-plus-circle"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">USERNAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">DISTRICT</th>
+                <th scope="col">POSITION</th>
+                <th scope="col">DaTE REGISTERED</th>
+                <th width="280px">Action</th>
+            </tr>
+        </thead>
+    
+    </table>
 </div>
 @endsection
