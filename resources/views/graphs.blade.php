@@ -1,37 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<br><br>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            </div>
-        </div>
+<div style="margin-left:10%">
+<div class="pull-right">
+  <a href="home" title="Go Back TO Home"><button class="btn btn-success">Go Back</button> </a>
+</div>
+
+<h2 style="text-align: center;">A bar graph showing treasury registered in a given month</h2>
+    <div class="container-fluid p-5">
+    <div id="barchart_material" style="width: 100%; height: 500px;"></div>
     </div>
+ 
+    <script type="text/javascript">
+ 
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+ 
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['donor', 'amount'],
+ 
+            @php
+              foreach($treasury as $treasurys) {
+                  echo "['".$treasurys->donor."', ".$treasurys->amount.",],";
+              }
+            @endphp
+        ]);
+ 
+        var options = {
+          chart: {
+            title: 'Bar Graph | amount',
+            subtitle: 'A graph showing amount, and donor:',
+          },
+          bars: 'vertical'
+        };
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    
+    <div class="pull-right">
+  <a href="hospital_graph" title="check hospital graph"><button class="btn btn-success">Hospital Graph</button> </a>
 </div>
-<div class="w3-sidebar w3-bar-block" style="width:15%;" >
-   <ul class="list-unstyled">
-     <li><h4><a href="registerhealthofficer" class="w3-bar-item w3-button "> REGISTER HEALTH OFFICER</a></h4></li>
-     <li><h4><a href="healthofficerlists" class="w3-bar-item w3-button "> HEALTH OFFICER LISTS</a></h4></li>
-     <li><h4><a href="covid19cases" class="w3-bar-item w3-button "> COVID-19 CASES</a></h4></li>
-     <li><h4><a href="funds" class="w3-bar-item w3-button "> FUNDS</a></h4>
-        <ul>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> REGISTER FUNDS</a></h4></li>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> VIEW FUNDS</a></h4></li>
-        </ul>
-     </li>
-     <li><h4><a href="payments" class="w3-bar-item w3-button "> PAYMENTS</a></h4></li>
-     <li><h4><a href="graphs" class="w3-bar-item w3-button "> GRAPHS</a></h4></li>
-   </ul>
 </div>
 
-<div style="margin-left:25%">
-
-</div>
 @endsection

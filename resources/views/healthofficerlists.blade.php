@@ -1,61 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            </div>
-        </div>
+<br><br>
+<div style="margin-left:10%">
+    <div class="pull-right">
+        <a href="home" title="Go back"><button class="btn btn-success">Go Back To Home Page</button> </a>
     </div>
-</div>
-<div class="w3-sidebar w3-bar-block" style="width:15%;" >
-   <ul class="list-unstyled">
-     <li><h4><a href="registerhealthofficer" class="w3-bar-item w3-button "> REGISTER HEALTH OFFICER</a></h4></li>
-     <li><h4><a href="healthofficerlists" class="w3-bar-item w3-button "> HEALTH OFFICER LISTS</a></h4></li>
-     <li><h4><a href="covid19cases" class="w3-bar-item w3-button "> COVID-19 CASES</a></h4></li>
-     <li><h4><a href="funds" class="w3-bar-item w3-button "> FUNDS</a></h4>
-        <ul>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> REGISTER FUNDS</a></h4></li>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> VIEW FUNDS</a></h4></li>
-        </ul>
-     </li>
-     <li><h4><a href="payments" class="w3-bar-item w3-button "> PAYMENTS</a></h4></li>
-     <li><h4><a href="graphs" class="w3-bar-item w3-button "> GRAPHS</a></h4></li>
-   </ul>
-</div>
-
-<div style="margin-left:25%">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h1 style="text-align:center">COVID-19 HEALTH OFFICER </h1> <br>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="registerhealthofficer" title="register new officer"> <i class="fas fa-plus-circle"></i>
-                    </a>
+                <h1 style="text-align:center">COVID-19 HEALTH OFFICER LIST </h1> <br>
             </div>
         </div>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="background-color:white">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">NAME</th>
                 <th scope="col">USERNAME</th>
                 <th scope="col">EMAIL</th>
                 <th scope="col">DISTRICT</th>
                 <th scope="col">POSITION</th>
-                <th scope="col">DaTE REGISTERED</th>
+                <th scope="col">NUMBER OF PATIENTS TREATED</th>
+                <th scope="col">HOSPITAL NAME</th>
+                <th scope="col">DATE REGISTERED</th>
                 <th width="280px">Action</th>
             </tr>
+        @foreach($officers as $officer)
+        <tr>
+             <td>{{$officer->id}}</td>
+             <td>{{$officer->name}}</td>
+             <td>{{$officer->username}}</td>
+             <td>{{$officer->email}}</td>
+             <td>{{$officer->district}}</td>
+             <td>{{$officer->position}}</td>
+             <td>{{$officer->number_of_patients_treated}}</td>
+             <td>{{$officer->hospital_name}}</td>
+             <td>{{$officer->date_registered}}</td> 
+             <td>
+            @if (Auth::user()->role === 'Administrator')
+                <a href="/edit_officer/{{$officer->id}}"><button class="btn btn-primary">Edit</button></a> | 
+                <a href="/delete_officer/{{$officer->id}}"><button class="btn btn-danger">Delete</button></a>
+            @endif
+
+             </td>
+          </tr>
+        @endforeach
         </thead>
     
-    </table>
+    </table><br>
+    @if (Auth::user()->role === 'Administrator')
+        <div class="pull-right">
+           <a href="registerhealthofficer" title="Add hospital"><button class="btn btn-light">Add health officer</button> </a>
+        </div>
+    @endif
 </div>
 @endsection

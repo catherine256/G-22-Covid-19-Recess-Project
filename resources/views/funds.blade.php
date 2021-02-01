@@ -1,62 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            </div>
-        </div>
-    </div>
+<br><br>
+<div style="margin-left:10%">
+<div class="pull-right">
+  <a href="home" title="Go back"><button class="btn btn-success">Go Back</button> </a>
 </div>
-<div class="w3-sidebar w3-bar-block" style="width:15%;" >
-   <ul class="list-unstyled">
-     <li><h4><a href="registerhealthofficer" class="w3-bar-item w3-button"> REGISTER HEALTH OFFICER</a></h4></li>
-     <li><h4><a href="healthofficerlists" class="w3-bar-item w3-button"> HEALTH OFFICER LISTS</a></h4></li>
-     <li><h4><a href="covidcases" class="w3-bar-item w3-button"> COVID-19 CASES</a></h4></li>
-     <li><h4><a href="funds" class="w3-bar-item w3-button"> FUNDS</a></h4>
-        <ul>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> REGISTER FUNDS</a></h4></li>
-           <li><h4><a href="funds" class="w3-bar-item w3-button"> VIEW FUNDS</a></h4></li>
-        </ul>
-     </li>
-     <li><h4><a href="payments" class="w3-bar-item w3-button"> PAYMENTS</a></h4></li>
-     <li><h4><a href="graphs" class="w3-bar-item w3-button"> GRAPHS</a></h4></li>
-   </ul>
-</div>
-
-<div style="margin-left:25%">
+@if(Session::has('treasury_delete'))
+   <span>{{Session::get('treasury_delete')}}</span>
+@endif
 <h2 style="text-align:center;">DECLARE AND REGISTER DONOR FUNDS</h2>
-    <form>
+@if(Session::has('funds'))
+   <span>{{Session::get('funds')}}</span>
+@endif
+    <form method="post" action="{{route('funds')}}">
+    @csrf
     <div class="form-group">
-    <label for="exampleInputPassword1">AMOUNT</label>
-    <input type="number" class="form-control" id="" placeholder="amount">
+    <label>AMOUNT</label>
+    <input type="number" class="form-control" id="" placeholder="amount" name="amount">
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">DATE</label>
-    <input type="date" class="form-control" id="" placeholder="Enter date ">
+    <label>DONOR</label>
+    <input type="text" class="form-control" id="" placeholder="donor" name="donor">
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">DONOR</label>
-    <input type="text" class="form-control" id="" placeholder="donor">
-  </div>
-  <div class="text-center"><button type="submit" class="btn btn-primary">Register</button></div>
+  <div class="text-center"><button type="submit" class="btn btn-dark">Register Funds</button></div>
 </form><br><br><br>
    <h2 style="text-align:center;">TREASURY STATUS</h2>
-   <table class="table table-bordered">
+   <table class="table table-bordered" style="background-color:white">
       <thead class="thead-dark">
           <tr>
              <th scope="col">TREASURY_ID</th>
              <th scope="col">AMOUNT</th>
              <th scope="col">DATE</th>
              <th scope="col">DONOR</th>
+             <th scope="col">ACTION</th>
           </tr>
+          @foreach($treasury as $treasurys)
+          <tr>
+             <td>{{$treasurys->treasury_id}}</td>
+             <td>{{$treasurys->amount}}</td>
+             <td>{{$treasurys->date_declared}}</td>
+             <td>{{$treasurys->donor}}</td>
+             <td>
+                <a href="/edit_treasury/{{$treasurys->treasury_id}}"><button class="btn btn-primary">Edit</button></a> | 
+                <a href="/delete_treasury/{{$treasurys->treasury_id}}"><button class="btn btn-danger">Delete</button></a>
+             </td>
+          </tr>
+          @endforeach
        </thead>
    </table>
 </div>

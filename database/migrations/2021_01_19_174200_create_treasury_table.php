@@ -14,8 +14,10 @@ class CreateTreasuryTable extends Migration
     public function up()
     {
         Schema::create('treasury', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('treasury_id');
+            $table->string('amount');
+            $table->string('donor');
+            $table->timestamp('date_declared')->usecurrent();
         });
     }
 

@@ -14,8 +14,11 @@ class CreateHospitalsTable extends Migration
     public function up()
     {
         Schema::create('hospitals', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('hospital_id');
+            $table->string('name');
+            $table->string('category');
+            $table->integer('number_of_health_officers');
+            $table->timestamp('date')->usecurrent();
         });
     }
 
