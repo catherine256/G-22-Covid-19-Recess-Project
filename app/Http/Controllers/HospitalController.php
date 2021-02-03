@@ -56,3 +56,4 @@ class HospitalController extends Controller
        return view('hospital_graph',['hospitals' => $hospitals]);   
     }
 }
+
