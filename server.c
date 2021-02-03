@@ -35,7 +35,7 @@ serv_addr.sin_port = htons(portno);
 if(bind(sockfd, (struct sockaddr * ) &serv_addr, sizeof(serv_addr))<0)
 error("Binding failed");
 
-listen(sockfd, 5);
+listen(sockfd, 10);
 clilen = sizeof(cli_addr);
 
 newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
@@ -119,7 +119,7 @@ if((strcmp(choice, "Addpatient")==0) && (strstr(file_name, txt))){
 printf("You selected to add a file\n");
 filetransfer();
 printf("success\n");
- goto q;
+ goto G;
 }
 //Add only one patient 
  else if((strcmp(choice, "Addpatient"))==0 && (!strstr(file_name, txt))){
@@ -151,15 +151,15 @@ read(newsockfd, opl, 255);
 
 else
 printf("command not found\n");
-goto q;
-   break;
+goto G;
+  break;
 case 2:
-G : printf("Want the number of cases");
+printf("Want the number of cases");
 read(newsockfd, choice, 255);
 if(strcmp(choice, "Check_status")==0){
 fp = fopen("enrollment_file.txt", "r");
 if(fp == NULL){
-puts("\nFile does not exist");
+puts("File does not exist\n");
 } else{
 char store[200];
 int num_of_cases = 0;
@@ -173,46 +173,53 @@ fclose(fp);
 printf("Wrong command!!! Please try again\n");
 goto G;
 }
+goto G;//go back to read to repeat the procecess
 break;
 
+//Perform the search action when option 3 is selected
 case 3:
-
 read(newsockfd, criteria, 10);
 if(strcmp(criteria, "Search")==0){
 fp = fopen("enrollment_file.txt", "r");
 char store[200];
 char search[50];
 read(newsockfd, search, 50);
-while(fgets(store, 100, fp)!=NULL){
+//reads a line from fp and stores it into the string pointed to store
+while(fgets(store, 200, fp)!=NULL){
 total_records++;
 if(strstr(store, search)!=NULL){
 puts(store);
 write(newsockfd, store, 200);
 records++;
+   }
 }
-
-}
-write(newsockfd, &records, sizeof(int));
+write(newsockfd, &records, sizeof(int));//send records to the client
 if(records == 0){
 printf("No records found\n");
-} else
-{
+    } else
+          {
 int i=0;
 for(i=0; i<total_records; i++){
 if(records == i){
 int get_available = records;
 get_available = 1?printf("%drecord available out of %d\n", get_available, total_records)
                  :printf("%drecords available out of %d\n", get_available, total_records);
-}
-}
+      }
+   }
 }
 printf("/n");
 }
+goto G;
 break;
+//Option 4 is for quiting the application
+case 4:
+goto q;
+break;
+}
 q:
 close(newsockfd);
 close(sockfd);
 return 0;
-}
+
 }
 
