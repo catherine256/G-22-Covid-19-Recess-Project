@@ -90,3 +90,7 @@ Route::get('/officersRegional', [App\Http\Controllers\OfficersRegionalController
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments');
 Route::post('/payments', [PaymentsController::class, 'store']);
+
+Route::get('/pending_list', [App\Http\Controllers\PendingController::class, 'PendingList'])->name('pending_list');
+
+Route::get('/covid_19_lists', [App\Http\Controllers\PatientsController::class,'index'])->name('covid_19_lists');

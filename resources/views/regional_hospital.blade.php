@@ -42,7 +42,7 @@
     </form>
     @endif
     <br><br>
-    <h2 style="text-align:center">NATIONAL HOSPITALS LIST</h2>
+    <h2 style="text-align:center">REGIONAL HOSPITALS LIST</h2>
 
     <table class="table table-bordered" style="background-color:white">
   <thead class="thead-dark">

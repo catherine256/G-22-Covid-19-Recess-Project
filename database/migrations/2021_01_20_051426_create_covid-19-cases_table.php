@@ -15,7 +15,12 @@ class CreateCovid19CasesTable extends Migration
     {
         Schema::create('covid-19-cases', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('patient_name');
+            $table->string('gender');
+            $table->string('category');
+            $table->string('officer_name');
+            $table->string('hospital_name');
+            $table->timestamp('date_registered')->usecurrent();
         });
     }
 

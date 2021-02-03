@@ -16,23 +16,30 @@
     </div>
 </div>
     @if(Auth::user()->role === 'Director')
-    <div class="w3-sidebar w3-teal" style="width:25% ; height:100%" >
+    <div class="w3-sidebar w3-teal" style="width:25% ; height:500px" >
       <ul class="list-unstyled">
         <li><h4><a href="covid_19_lists" class="w3-bar-item w3-button">LIST OF ENROLLED PATIENTS</a></h4></li>
-        <li><h4><a href="home" class="w3-bar-item w3-button">COVID-19 HEALTH OFFICERS</a></h4>
-            <ul>
-                <li><h4><a href="healthofficerlists" class="w3-bar-item w3-button">GENERAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="officersRegional" class="w3-bar-item w3-button">REGIONAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="officersNational" class="w3-bar-item w3-button">NATIONAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="" class="w3-bar-item w3-button">PENDING LIST OF  OFFICERS</a></h4></li>
-            </ul>
+        <li>
+        <div class="dropdown">
+            <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"><h4>COVID-19 HEALTH OFFICERS</h4></button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="healthofficerlists">GENERAL HEALTH OFFICERS</a>
+                <a class="dropdown-item" href="officersRegional">REGIONAL HEALTH OFFICERS</a>
+                <a class="dropdown-item" href="officersNational">NATIONAL HEALTH OFFICERS</a>
+                <a class="dropdown-item" href="pending_list">PENDING HEALTH OFFICERS</a>
+           </div>
+        </div>
         </li>
-        <li><h4><a href="home" class="w3-bar-item w3-button">HOSPITALS</a></h4>
-            <ul>
-                <li><h4><a href="hospital" class="w3-bar-item w3-button">GENERAL HOSPITALS</a></h4></li>
-                <li><h4><a href="regional_hospital" class="w3-bar-item w3-button">REGIONAL HOSPITALS</a></h4></li>
-                <li><h4><a href="national_hospital" class="w3-bar-item w3-button">NATIONAL HOSPITALS</a></h4></li>
-            </ul>
+        <br>
+        <li>
+           <div class="dropdown">
+               <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"><h4>LIST OF ALL HOSPITALS</h4></button>
+               <div class="dropdown-menu">
+                    <a class="dropdown-item" href="hospital">GENERAL HOSPITALS</a>
+                    <a class="dropdown-item" href="regional_hospital">REGIONAL HOSPITALS</a>
+                    <a class="dropdown-item" href="national_hospital">NATIONAL HOSPITALS</a>
+                </div>
+            </div>
         </li> 
         <li><h4><a href="payments" class="w3-bar-item w3-button">PAYMENTS</a></h4></li> 
         <li><h4><a href="graphs" class="w3-bar-item w3-button">GRAPHS</a></h4></li>                               
@@ -51,20 +58,26 @@
         <li><h4><a href="registerhealthofficer" class="w3-bar-item w3-button">REGISTER HEALTH OFFICER</a></h4></li>                            
         <li><h4><a href="funds" class="w3-bar-item w3-button">REGISTER DONOR MONEY</a></h4></li>                              
         <li><h4><a href="covid_19_lists" class="w3-bar-item w3-button">LIST OF ENROLLED PATIENTS</a></h4></li>                                   
-        <li><h4><a href="home" class="w3-bar-item w3-button">COVID-19 HEALTH OFFICERS</a></h4>
-           <ul>
-                <li><h4><a href="healthofficerlists" class="w3-bar-item w3-button">GENERAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="officersRegional" class="w3-bar-item w3-button">REGIONAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="officersNational" class="w3-bar-item w3-button">NATIONAL HEALTH OFFICERS</a></h4></li>
-                <li><h4><a href="" class="w3-bar-item w3-button">PENDING LIST OF  OFFICERS</a></h4></li>
-            </ul>
+        <li>
+           <div class="dropdown"><button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"><h4>COVID-19 HEALTH OFFICERS</h4> </button>
+               <div class="dropdown-menu">
+                   <a class="dropdown-item" href="healthofficerlists">GENERAL HEALTH OFFICERS</a>
+                   <a class="dropdown-item" href="officersRegional">REGIONAL HEALTH OFFICERS</a>
+                   <a class="dropdown-item" href="officersNational">NATIONAL HEALTH OFFICERS</a>
+                   <a class="dropdown-item" href="pending_list">PENDING HEALTH OFFICERS</a>
+               </div>
+           </div>
         </li> 
-        <li><h4><a href="home" class="w3-bar-item w3-button">HOSPITALS</a></h4>
-            <ul>
-                <li><h4><a href="hospital" class="w3-bar-item w3-button">GENERAL HOSPITALS</a></h4></li>
-                <li><h4><a href="regional_hospital" class="w3-bar-item w3-button">REGIONAL HOSPITALS</a></h4></li>
-                <li><h4><a href="national_hospital" class="w3-bar-item w3-button">NATIONAL HOSPITALS</a></h4></li>
-            </ul>
+        <br>
+        <li>
+           <div class="dropdown">
+               <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown"><h4>LIST OF ALL HOSPITALS</h4></button>
+               <div class="dropdown-menu">
+                    <a class="dropdown-item" href="hospital">GENERAL HOSPITALS</a>
+                    <a class="dropdown-item" href="regional_hospital">REGIONAL HOSPITALS</a>
+                    <a class="dropdown-item" href="national_hospital">NATIONAL HOSPITALS</a>
+                </div>
+            </div>
         </li>  
         <li><h4><a href="payments" class="w3-bar-item w3-button">PAYMENTS</a></h4></li>                             
         <li><h4><a href="graphs" class="w3-bar-item w3-button">GRAPHS</a></h4></li>                               
@@ -87,4 +100,5 @@
 <button type="button" class="btn btn-dark btn-lg" style=" width:250px">0</button>
 </div>
 </div>
+
 @endsection
