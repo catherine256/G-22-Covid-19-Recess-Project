@@ -40,7 +40,7 @@ class PendingController extends Controller
             } 
            }
         );
-        if(count($treated_patients)){
+        if(count($number_of_patients_treated)){
             $officer_total = DB::table('regionals')->min('number_of_health_officers');
             $hospital_details = DB::table('regionals')->where('number_of_health_officers', $this->general_officer_id)->get();
             $officer_details = DB::table('hospitals')->where('id', '=', $this->general_officer_id)->get();
@@ -50,16 +50,15 @@ class PendingController extends Controller
 
            DB::table('officer_regionals')->insert([
             'officer_name' =>$officer_details[0]->name ,
-            'role'=>'senior officer',
+            'role'=>'senior covid-19 health  officer',
             'hospital_id'=>$hospital_details[0]->id,
-            'user_id'=>1,
             'hospital_name'=>$hospital_details[0]->hospital_name
         ]);
 
         //increment regional hospital
 
         return 
-        DB::table('regional_hospitals')->where('officer_total', '=', $officer_total)->increment('officer_total', 1);
+        DB::table('regional_hospitals')->where('number_of_health_officers', '=', $officer_total)->increment('number_of_health_officers', 1);
 
 
 
@@ -76,7 +75,7 @@ class PendingController extends Controller
             }
            }
         );
-        if(count($treated_patients)){
+        if(count($number_of_patients_treated)){
         return 
         DB::table('officer_regionals')
               ->where('id', $this->referal_officer_id)

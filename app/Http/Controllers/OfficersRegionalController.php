@@ -13,7 +13,6 @@ class OfficersRegionalController extends Controller
         return view('officersRegional');
     }
 
-
     public function officerRegionalList()
     {
         $officersRegional = DB::table('officer_regionals')->get();
@@ -42,7 +41,6 @@ class OfficersRegionalController extends Controller
             DB::table('regionals')
             ->where('number_of_health_officers', '=', $findMin[0])->increment('number_of_health_officers', 1);
 
-
         DB::table('officer_regionals')->insert([
             'name'=>$request->name,
             'username'=>$request->username,
@@ -52,13 +50,12 @@ class OfficersRegionalController extends Controller
             'number_of_patients_treated'=>$request->number_of_patients_treated,
             'hospital_name'=>$regionalHospital[0]->name,
 
-
         ]);
             return back()->with('officersRegional', 'health officer registered successfully');
         } else {
             return back()->with('notFound', 'All Regional hospitals are full');
         }
-            
+    }        
 
-    }
+    
 }
