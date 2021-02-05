@@ -80,17 +80,12 @@ Route::get('graphs', [App\Http\Controllers\TreasurysController::class, 'showGrap
 
  Route::get('hospital_graph', [App\Http\Controllers\HospitalController::class, 'hospitalGraph'])->name('hospital_graph');
 
-Route::get('/officersNational', [App\Http\Controllers\OfficersNationalController::class,'addNationalOfficer'])->name('officersNational');
-Route::post('/officersNational', [App\Http\Controllers\OfficersNationalController::class,'saveOfficerNational'])->name('officersNational');
-Route::get('/officersNational', [App\Http\Controllers\OfficersNationalController::class,'officerNationalList'])->name('officersNational');
-
-Route::get('/officersRegional', [App\Http\Controllers\OfficersRegionalController::class,'addRegionalOfficer'])->name('officersRegional');
-Route::post('/officersRegional', [App\Http\Controllers\OfficersRegionalController::class,'saveOfficerRegional'])->name('officersRegional');
-Route::get('/officersRegional', [App\Http\Controllers\OfficersRegionalController::class,'officerRegionalList'])->name('officersRegional');
-
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments');
 Route::post('/payments', [PaymentsController::class, 'store']);
 
 Route::get('/pending_list', [App\Http\Controllers\PendingController::class, 'PendingList'])->name('pending_list');
 
+Route::get('/officersRegional', [App\Http\Controllers\PendingController::class, 'officersRegional'])->name('officersRegional');
+
+Route::get('/officersNational', [App\Http\Controllers\PendingController::class, 'officersNational'])->name('officersNational');
 Route::get('/covid_19_lists', [App\Http\Controllers\PatientsController::class,'index'])->name('covid_19_lists');

@@ -32,8 +32,24 @@ class PendingController extends Controller
 
     //   }
 
+    protected function officers_referal_hospital(){
+        return
+        $officers_referal_hospital = DB::table('officer_regionals')
+        ->select('officer_regionals.name','officer_regionals.id','officer_regionals.username','officer_regionals.email',
+        'officer_regionals.district','officer_regionals.position','officer_regionals.number_of_patients_treated','officer_regionals.hospital_name',
+        )->get();
+    }
+    protected function officers_national_hospital(){
+        return 
+        $officers_national_hospital =DB::table('officer_nationals')
+        ->select('officer_nationals.name','officer_nationals.id','officer_nationals.username','officer_nationals.email',
+        'officer_nationals.district','officer_nationals.position','officer_nationals.number_of_patients_treated','officer_nationals.hospital_name',
+        )->get();
+   
+    }
+
     protected function check_general_treated_patients($officer_array){
-          $treated_patients =  array_filter($officer_array,function($officers){
+          $number_of_patients_treated =  array_filter($officer_array,function($officers){
             if($officers->number_of_patients_treated > 100){
                 $this->general_officer_id = $officers->id;
                 return $officers;
@@ -49,9 +65,12 @@ class PendingController extends Controller
            //insert 
 
            DB::table('officer_regionals')->insert([
-            'officer_name' =>$officer_details[0]->name ,
-            'role'=>'senior covid-19 health  officer',
-            'hospital_id'=>$hospital_details[0]->id,
+            'name' =>$officer_details[0]->name ,
+            'username' =>$officer_details[0]->username ,
+            'email' =>$officer_details[0]->email ,
+            'district' =>$officer_details[0]->district ,
+            'position'=>'senior covid-19 health  officer',
+            'number_of_patients_treated'=>$officer_details[0]->number_of_patients_treated,
             'hospital_name'=>$hospital_details[0]->hospital_name
         ]);
 
@@ -68,7 +87,7 @@ class PendingController extends Controller
         }
     }
     protected  function check_referal_table($officer_array){
-        $treated_patients =  array_filter($officer_array,function($officers){
+        $number_of_patients_treated =  array_filter($officer_array,function($officers){
             if($officers->number_of_patients_treated > 900){
                 $this->referal_officer_id = $officers->id;
                 return $officers;
@@ -111,13 +130,38 @@ class PendingController extends Controller
    
     public function PendingList()
     {
-      $pendingList = $this->pendingOfficerList();
-      $this->format_currency($pendingList->toArray());
-       return view('pending_list',
-       [
-        'officers_pending'=>$pendingList
-       ]
 
-    );
+        $officers_referal_hospital =  $this->officers_referal_hospital();
+        $officers_national_hospital = $this->officers_national_hospital();
+        $this->check_referal_table($officers_referal_hospital->toArray());
+        $pendingList = $this->pendingOfficerList();
+        $this->format_currency($pendingList->toArray());
+         return view('pending_list',
+        [
+        'officers_pending'=>$pendingList,
+        'officers_regional'=>$officers_referal_hospital,
+        'officers_national'=>$officers_national_hospital,
+        ]);
     }
+
+    public function officersRegional()
+    {
+
+        $officers_referal_hospital =  $this->officers_referal_hospital();
+        $this->check_referal_table($officers_referal_hospital->toArray());
+         return view('officersRegional',
+        [
+        'officers_regional'=>$officers_referal_hospital,
+        ]);
+    }
+
+    public function officersNational()
+    {
+        $officers_national_hospital = $this->officers_national_hospital();
+         return view('officersNational',
+        [
+        'officers_national'=>$officers_national_hospital,
+        ]);
+    }
+
 }
