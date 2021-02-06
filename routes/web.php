@@ -16,7 +16,7 @@ use App\Http\Controllers\PaymentsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('/registerhealthofficer', function () {
     return view('registerhealthofficer');
