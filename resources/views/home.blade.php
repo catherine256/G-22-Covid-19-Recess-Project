@@ -93,12 +93,13 @@
 
 <div style="margin-left:27%;">
 <i class='fas fa-briefcase-medical' style='font-size:100px;color:red; margin-left:30%'></i>
-<div class="container" style="margin-left:20%; margin-top:5%;">POSITIVE CASES <br>
-<button type="button" class="btn btn-dark btn-lg" style=" width:250px">0</button>
+<div class="container" style="margin-left:20%; margin-top:5%;"> TOTAL NUMBER OF CASES <br>
+<button type="button" class="btn btn-dark btn-lg" style=" width:250px">{{count($patients_total)}}</button>
 </div>
-<div class="container" style="margin-left:20%; margin-top:10%;">FALSE POSITIVE CASES <br>
-<button type="button" class="btn btn-dark btn-lg" style=" width:250px">0</button>
+<div class="container" style="margin-left:20%; margin-top:10%;">GENERAL TOTAL HEALTH OFFICERS <br>
+<button type="button" class="btn btn-dark btn-lg" style=" width:250px">{{count($officers_total)}}</button>
 </div>
+
 </div>
 
 @endsection

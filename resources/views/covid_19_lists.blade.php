@@ -17,7 +17,7 @@
             </div> -->
         </div>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="background-color:white;">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">PATIENT_ID</th>

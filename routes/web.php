@@ -46,6 +46,7 @@ Route::get('/hierarchy-charts', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/graphs', [App\Http\Controllers\GraphsController::class, 'index'])->name('graphs');
 Route::get('/funds', [App\Http\Controllers\TreasurysController::class,'addTreasury'])->name('funds');
 Route::post('/funds', [App\Http\Controllers\TreasurysController::class,'saveTreasury'])->name('funds');
 Route::get('/funds', [App\Http\Controllers\TreasurysController::class,'treasuryList'])->name('funds');
