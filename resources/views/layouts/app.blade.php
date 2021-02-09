@@ -61,15 +61,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (Route::has(''))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}" style="color:white">{{ __('Login') }}</a>
+                                    <a class="lining-up" href="{{ route('login') }}" style="color:white">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
+                            @if (Route::has(''))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}" style="color:white">{{ __('Register') }}</a>
+                                    <a class="lining-up" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -101,18 +101,16 @@
                                     </a>
     
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                                        
     
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
+                                        <li><h4><a class="w3-bar-item w3-button" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }} </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf</form>
+        </h4></li>   
+ 
     
                                     </div>
-                                </li>
+                                
                                  @endif
                         @endguest
                     </ul>
@@ -122,6 +120,7 @@
         </div>
 
         <main>
+        
             @yield('content')
         </main>
     </div>

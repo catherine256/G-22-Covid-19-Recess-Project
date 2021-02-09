@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\Auth\LogoutController;
 // use App\Http\Controllers\TreasurysController;
 
 /*
@@ -90,3 +91,9 @@ Route::get('/officersRegional', [App\Http\Controllers\OfficersRegionalController
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments');
 Route::post('/payments', [PaymentsController::class, 'store']);
+
+Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
+
+Route::get('/', function() {
+    return view('welcome');
+})->name('welcome');

@@ -69,14 +69,12 @@
         <li><h4><a href="payments" class="w3-bar-item w3-button">PAYMENTS</a></h4></li>                             
         <li><h4><a href="graphs" class="w3-bar-item w3-button">GRAPHS</a></h4></li>                               
         <li><h4><a href="hierarchy-charts" class="w3-bar-item w3-button">HIERARCHY CHARTS</a></h4></li>   
-        <li><h4><a class="w3-bar-item w3-button" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }} </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf</form>
-        </h4></li>                               
+                                    
       </ul>
     </div>
      @endif 
- 
+
+    
 
 <div style="margin-left:27%;">
 <i class='fas fa-briefcase-medical' style='font-size:100px;color:red; margin-left:30%'></i>
