@@ -1,12 +1,8 @@
-
 @extends('layouts.app')
 
 @section('content')
 <br><br>
-<div style="margin-left:10%; color:black">
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Go Back</button> </a>
-</div>
+<div style="color:black">
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-center">
@@ -76,5 +72,3 @@
     </form><br><br>
 
 @endsection
-
-

@@ -15,9 +15,10 @@ exit(0);
 }
 int main(int argc, char *argv[]){
 if(argc<2){
-fprintf(stderr, "Port No not provideded.Program terminated\n");
+fprintf(stderr, "Port No not provided.Program terminated\n"); //alert when port number is missing
 exit(1);
 }
+//Socket API variables
 int sockfd, newsockfd, portno, n;
 struct sockaddr_in serv_addr;
 struct hostent *server;
@@ -46,43 +47,39 @@ serv_addr.sin_port = htons(portno);
 if(connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr))<0)
 error("Connection Failed");
 
-char file_name[255];
-char patient_name[255];
-char gender[255];
-char category[255];
-char username[255];
-char choice[255];
-char txt[]=".txt";
-char date[255];
-char c;
-char disrtict[255];
-int m;
-char opl[255];
-char district[255];
-int words = 0;
+char file_name[255];//A file with a list of patients
+char patient_name[255];//Specifies patient name
+char date[255];//Date of case submission
+char gender[255];//Specifies gender for the patient
+char category[255];//Specifies whether the patient is symptomic or asymptomic
+char username[255];//Health officer's username
+char choice[255];//Command specification like Addpatient
+char txt[]=".txt";//Extension of the file to be uploaded
+char c;//for counting number of words in a enrollment file
+int m;//For menu selection
+char opl[255];//For addpatientlist command
+char district[255];//Officer's district
+int words = 0;//Initialises words variable
 int count;
 int num_of_cases;
-FILE *f;
+FILE *f;//file f pointer
+
 //Get the username
 G : 
 printf("Enter your username:");
 scanf("%s", username);
 write(sockfd, username, 255);
+
 //Get the district
 printf("Name of your district:");
 scanf("%s", district);
 write(sockfd, district, 255);
 
-
-//A function to submit cases
-void submitManyCases(){
-printf("========SUBMIT CASES==========\n");
 //Scan the choice and the file_name
 k : 
 scanf("%s %s", choice, file_name);
 write(sockfd, choice, 255);//send the choice to the server
 write(sockfd, file_name, 255);//send the patient_name to the server
-
 
 if((strcmp(choice, "Addpatient")==0) && (strstr(file_name, txt))){
 printf("It's a file\n");
@@ -98,60 +95,9 @@ printf("The file was sent successfully\n");
 printf("try again!! the file could not be submited!!\n");
 goto k;
 }
-}
-void submitOneCase(){
-m : scanf("%s %s %s %s %s", choice, patient_name, date, gender, category);
-if(strcmp(choice, "Addpatient")==0){
-write(sockfd, choice, 255);
-write(sockfd, patient_name, 255);
-write(sockfd, date, 255);
-write(sockfd, gender, 255);
-write(sockfd, category, 255);
-scanf("%s", opl);
-if(strcmp(opl, "Addpatientlist")==0){
-write(sockfd, opl, 255);
-        } else{
-        printf("Please try again!!!\n");
-        goto m;
-        }
-} else {
-printf("Wrong command\n");
-}
- 
-}
-void checkStatus(){
-
-printf("========NUMBER OF CASES===========\n");
-scanf("%s", choice);
-write(sockfd, choice, 255);
-read(sockfd, &num_of_cases, sizeof(int));
-printf("+.............................+\n");
-printf("|\tThere are %d cases now\t|\n", num_of_cases);
-printf("+.............................+\n");
-}
-
-//search for a record
-void search(){
-char search[10];
-char criteria[10];
-char store[200];
-int records=0;
-int get_available;
-printf("========SEARCH FOR A RECORD===========\n");
-printf("search by name or date\n");
-scanf("%s %s", search, criteria);
-write(sockfd, search, 10);
-write(sockfd, criteria, 10);
-
-read(sockfd, store, 200);
+=======
 n = read(sockfd, &records, sizeof(int));
-printf("%s\n", store);
-if(records == 0){
-printf("No records found\n");
-}
-}
-
-printf("==========MENU================\n");
+=======
 printf("1.ADD ONE CASE\n");
 printf("2.ADD MANY CASES\n");
 printf("3.NUMBER OF CASES\n");
@@ -181,9 +127,12 @@ case 4:
 case 5:
       goto q;
       break;
+case 4:
+     goto q;
+     break;
 default:
       printf("You selected a wrong choice\n");
-      goto q;
+      goto G;
       break;
 }
 

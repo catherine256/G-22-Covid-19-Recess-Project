@@ -35,7 +35,7 @@ serv_addr.sin_port = htons(portno);
 if(bind(sockfd, (struct sockaddr * ) &serv_addr, sizeof(serv_addr))<0)
 error("Binding failed");
 
-listen(sockfd, 5);
+listen(sockfd, 10);
 clilen = sizeof(cli_addr);
 
 newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
@@ -145,7 +145,7 @@ read(newsockfd, choice, 255);
 if(strcmp(choice, "Check_status")==0){
 fp = fopen("enrollment_file.txt", "r");
 if(fp == NULL){
-puts("\nFile does not exist");
+puts("File does not exist\n");
 } else{
 char store[200];
 int num_of_cases = 0;
@@ -166,28 +166,28 @@ fp = fopen("enrollment_file.txt", "r");
 char store[200];
 char search[50];
 read(newsockfd, search, 50);
-while(fgets(store, 100, fp)!=NULL){
+//reads a line from fp and stores it into the string pointed to store
+while(fgets(store, 200, fp)!=NULL){
 total_records++;
 if(strstr(store, search)!=NULL){
 puts(store);
 write(newsockfd, store, 200);
 records++;
+   }
 }
-
-}
-write(newsockfd, &records, sizeof(int));
+write(newsockfd, &records, sizeof(int));//send records to the client
 if(records == 0){
 printf("No records found\n");
-} else
-{
+    } else
+          {
 int i=0;
 for(i=0; i<total_records; i++){
 if(records == i){
 int get_available = records;
 get_available = 1?printf("%drecord available out of %d\n", get_available, total_records)
                  :printf("%drecords available out of %d\n", get_available, total_records);
-}
-}
+      }
+   }
 }
 printf("/n");
 }

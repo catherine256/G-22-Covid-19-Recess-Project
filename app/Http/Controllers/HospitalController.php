@@ -7,7 +7,7 @@ use DB;
 
 class HospitalController extends Controller
 {
-    public function addHospital()
+    public function addHospital() 
     {
         return view('add_hospital');
     }
@@ -56,4 +56,4 @@ class HospitalController extends Controller
        return view('hospital_graph',['hospitals' => $hospitals]);   
     }
 }
-
+ 
