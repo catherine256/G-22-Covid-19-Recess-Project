@@ -65,7 +65,8 @@ int num_of_cases;
 FILE *f;//file f pointer
 
 //Get the username
-G : printf("Enter your username:");
+G : 
+printf("Enter your username:");
 scanf("%s", username);
 write(sockfd, username, 255);
 
@@ -75,17 +76,11 @@ scanf("%s", district);
 write(sockfd, district, 255);
 
 //Scan the choice and the file_name
-void command(){
+k : 
 scanf("%s %s", choice, file_name);
 write(sockfd, choice, 255);//send the choice to the server
 write(sockfd, file_name, 255);//send the patient_name to the server
-}
 
-//A function to submit cases
-void submitCases(){
-printf("========SUBMIT CASES==========\n");
-command();
-//Run this if the name of the file is specified
 if((strcmp(choice, "Addpatient")==0) && (strstr(file_name, txt))){
 printf("It's a file\n");
 f=fopen(file_name, "r");
@@ -95,82 +90,42 @@ rewind(f);
 fread(buffer, sizeof(char), 512, f);
 write(sockfd, buffer, 512);
 printf("The file was sent successfully\n");
-} else if(strcmp(choice, "Addpatient")==0){//Run this if the Addpatient command is followed by name, date ,gender, category
-scanf("%s %s %s %s", patient_name, date, gender, category);
-write(sockfd, patient_name, 255);
-write(sockfd, date, 255);
-write(sockfd, gender, 255);
-write(sockfd, category, 255);
-scanf("%s", opl);
-write(sockfd, opl, 255);//Addpatientlist command sent to the server
-}else{ 
-printf("not found\nTry again\n");
- }
- 
+
+} else {
+printf("try again!! the file could not be submited!!\n");
+goto k;
 }
-//function For checking the number of cases currently in the enrollment file
-void checkStatus(){
-   printf("========NUMBER OF CASES===========\n");
-   scanf("%s", choice);//Scan check_status command
-   write(sockfd, choice, 255);
-   read(sockfd, &num_of_cases, sizeof(int));//Read the number of cases from the server
-   printf("+.............................+\n");
-   printf("|\tThere are %d cases now\t|\n", num_of_cases);//Display the number of cases to the officer
-   printf("+.............................+\n");
-   printf("Proceed.......\n");
-}
-
-//search for a record
-void search(){
-  char search[10];//For the search command
-  char criteria[10];//Search by date or name of the patient
-  char store[200];//an array with all the cases
-  int records;//Returns the number of records
-  int get_available;
-  printf("========SEARCH FOR A RECORD===========\n");
-  printf("search by name or date\n");
-  scanf("%s %s", search, criteria);
-  write(sockfd, search, 10);
-  write(sockfd, criteria, 10);
-
-  read(sockfd, store, 200);
-  n = read(sockfd, &records, sizeof(int));
-  read(sockfd, &records, sizeof(int));
-  printf("There are %d\n", n);
-
-printf("%s\n", store);
-printf("%s\n", store);
-printf("%s\n", store);
-printf("%s\n", store);
-printf("%s\n", store);
-printf("%s\n", store);
-
-
-if(records == 0){
-printf("No records found\nPlease try again\n");
-}
-}
-printf("==========MENU================\n");
-printf("1.ADD CASES\n");
-printf("2.NUMBER OF CASES\n");
-printf("3.SEARCH FOR RECORDS\n");
-printf("4.EXIT\n");
+=======
+n = read(sockfd, &records, sizeof(int));
+=======
+printf("1.ADD ONE CASE\n");
+printf("2.ADD MANY CASES\n");
+printf("3.NUMBER OF CASES\n");
+printf("4.SEARCH FOR RECORDS\n");
+printf("5.EXIT\n");
 printf("Enter your choice: ");
 scanf("%d", &m);
 write(sockfd, &m, sizeof(int));
 //Choices and their performances
 switch(m){
 case 1:
-      submitCases();
+      submitOneCase();
       goto G;
       break;
 case 2:
-      checkStatus();
+      submitManyCases();
       goto G;
       break;
 case 3:
+      checkStatus();
+      goto G;
+      break;
+case 4:
       search();
       goto G;
+      break;
+case 5:
+      goto q;
       break;
 case 4:
      goto q;
@@ -183,6 +138,5 @@ default:
 
 q: 
 close(sockfd);
-return 0;
 }
 

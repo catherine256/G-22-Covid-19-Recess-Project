@@ -77,52 +77,18 @@ printf("Adding patient....\n");
 //A function to Add one patient
 void addpatientlist(){
 //Write the details to the enrollment file
-fprintf(fp, "%s ", patient_name);
-fprintf(fp, "%s ", date);
-fprintf(fp, "%s ", gender);
-fprintf(fp, "%s ", category);
+fprintf(fp, "%s\t", patient_name);
+fprintf(fp, "%s\t", date);
+fprintf(fp, "%s\t", gender);
+fprintf(fp, "%s\t", category);
 fprintf(fp, "%s\n", username);
 printf("patient added!\n");
 fclose(fp);
 }
-//Upload a file of patients
-void filetransfer(){
-
-int words;
-//Write the file to the enrollment file
-fp = fopen("enrollment_file.txt", "a+");
-read(newsockfd, &words, sizeof(int));
-read(newsockfd, buffer, 512);
-fwrite(buffer, sizeof(char), words, fp);
-printf("The file was received successfully\n");
-}
-//Get the username from the client
-G : read(newsockfd, username, 255);
-printf("welcome %s\n", username);
-//Get the district name from the client
-read(newsockfd, district, 255);
-printf("District:%s\n", district);
-
-//Select the choice to perform
-read(newsockfd, &m, sizeof(int));
-printf("You selected %d\n", m);
-
-//Actions to be performed
-switch(m){
-//upload a list of patients
-case 1: 
-read(newsockfd, choice, 255);
-printf("choice:%s\n", choice);
-read(newsockfd, file_name, 255);
-
-if((strcmp(choice, "Addpatient")==0) && (strstr(file_name, txt))){
-printf("You selected to add a file\n");
-filetransfer();
-printf("success\n");
- goto G;
-}
+void addOnePatient(){
+p : read(newsockfd, choice, 255);
 //Add only one patient 
- else if((strcmp(choice, "Addpatient"))==0 && (!strstr(file_name, txt))){
+ if((strcmp(choice, "Addpatient"))==0 && (!strstr(file_name, txt))){
  //Get patient_name
 read(newsockfd, patient_name, 255);
 //Get patient_name
@@ -147,13 +113,33 @@ read(newsockfd, opl, 255);
   }
   else 
   printf("Wrong command\n");
+  goto p;
 }
 
 else
 printf("command not found\n");
-goto G;
-  break;
-case 2:
+}
+void addManyCases(){
+read(newsockfd, choice, 255);
+printf("choice:%s\n", choice);
+read(newsockfd, file_name, 255);
+printf("The file name is %s\n", file_name);
+if((strcmp(choice, "Addpatient")==0) && (strstr(file_name, txt))){
+printf("You selected to add a file\n");
+int words;
+//Write the file to the enrollment file
+fp = fopen("enrollment_file.txt", "a");
+read(newsockfd, &words, sizeof(int));
+read(newsockfd, buffer, 512);
+fwrite(buffer, sizeof(char), words, fp);
+fclose(fp);
+printf("The file was received successfully\n");
+printf("success\n");
+} else {
+printf("Cannot add the file\n");
+}
+}
+void checkStatus(){
 printf("Want the number of cases");
 read(newsockfd, choice, 255);
 if(strcmp(choice, "Check_status")==0){
@@ -171,13 +157,9 @@ fclose(fp);
 }
 } else {
 printf("Wrong command!!! Please try again\n");
-goto G;
 }
-goto G;//go back to read to repeat the procecess
-break;
-
-//Perform the search action when option 3 is selected
-case 3:
+}
+void search(){
 read(newsockfd, criteria, 10);
 if(strcmp(criteria, "Search")==0){
 fp = fopen("enrollment_file.txt", "r");
@@ -209,10 +191,39 @@ get_available = 1?printf("%drecord available out of %d\n", get_available, total_
 }
 printf("/n");
 }
+}
+//Get the username from the client
+G : read(newsockfd, username, 255);
+printf("welcome %s\n", username);
+//Get the district name from the client
+read(newsockfd, district, 255);
+printf("District:%s\n", district);
+
+//Select the choice to perform
+read(newsockfd, &m, sizeof(int));
+printf("You selected %d\n", m);
+
+//Actions to be performed
+switch(m){
+case 1:
+addOnePatient();
+goto G;
+   break;
+//upload a list of patients
+case 2: 
+addManyCases();
 goto G;
 break;
-//Option 4 is for quiting the application
+case 3:
+checkStatus();
+goto G;
+break;
+
 case 4:
+search();
+goto G;
+break;
+case 5:
 goto q;
 break;
 }

@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -222,6 +222,8 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
+  color:teal;
+  font-weight:bold;
 }
 
 button {
@@ -4340,6 +4342,7 @@ input[type=button].btn-block {
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
   border-top: 0;
+
 }
 
 .card-body {
@@ -4371,8 +4374,12 @@ input[type=button].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color:white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: center;
+  color: teal;
+  font-weight: bold;
+  font-size: 30px;
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -7415,7 +7422,8 @@ button.bg-dark:focus {
 }
 
 .w-100 {
-  width: 100% !important;
+  width: 75% !important;
+  
 }
 
 .w-auto {
@@ -9970,4 +9978,11 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.lining-up li{
+  display: inline;
+  list-style-type: none;
+  color: teal;
+  font-weight: bold;
 }
