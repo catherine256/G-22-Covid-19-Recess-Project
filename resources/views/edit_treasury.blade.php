@@ -2,7 +2,7 @@
 
 @section('content')
 <br><br>
-<div style="margin-left:10%">
+<div style="">
 <div class="pull-right">
   <a href="/funds" title="Go back"><button class="btn btn-success">Go Back</button> </a>
 </div>

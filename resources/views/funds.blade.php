@@ -2,10 +2,7 @@
 
 @section('content')
 <br><br>
-<div style="margin-left:10%">
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Go Back</button> </a>
-</div>
+<div style="">
 @if(Session::has('treasury_delete'))
    <span>{{Session::get('treasury_delete')}}</span>
 @endif

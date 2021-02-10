@@ -10,6 +10,8 @@
     <title>covid-19 case manager</title>
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -38,8 +40,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="css/main.css">
     <link href="your-project-dir/font-css/LineIcons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
     <link rel="stylesheet" href="assests/chart.js/Chart.css">
@@ -48,7 +48,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
 </head>
-<body class="w3-teal"  style="background-color:teal">
+<body class="w3-teal"  style="background-color:teal color:black;" >
     <div id="app">
       <div style="background-color:black">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
@@ -129,11 +129,53 @@
                 </div>
             </div>
         </nav>
-        </div>
-
-        <main>
-            @yield('content')
-        </main>
+        </div> 
+<div class="w3-sidebar w3-bar-block w3-light-blue w3-card" style="width:15%">
+<a href="home" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
+  @if(Auth::user()->role === 'Administrator')
+  <a href="registerhealthofficer" class="w3-bar-item w3-button"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp;  Register Health Officers</a> 
+  <a href="funds" class="w3-bar-item w3-button"><i class="fa fa-user"></i>  Register Donor Funds</a>
+  @endif
+  <a href="Covid_19_lists" class="w3-bar-item w3-button"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i>&nbsp; Enrolled Patients Lists</a>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button"><i class="fas fa-briefcase-medical"></i>  Hospitals
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="hospital" class="w3-bar-item w3-button">General</a>
+      <a href="regional_hospital" class="w3-bar-item w3-button">Regional</a>
+      <a href="national_hospital" class="w3-bar-item w3-button">Regional</a>
     </div>
-</body>
+  </div> 
+
+  <div class="w3-dropdown-hover">
+    <button class="w3-button"><i class="fa fa-user"></i>  Officers Lists
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="healthofficerlists" class="w3-bar-item w3-button">Officers General</a>
+      <a href="officersRegional" class="w3-bar-item w3-button">oficers Regional</a>
+      <a href="officersNational" class="w3-bar-item w3-button">officers National</a>
+      <a href="pending_list" class="w3-bar-item w3-button">Pending officers</a>
+    </div>
+  </div>
+  <a href="payments" class="w3-bar-item w3-button"><i class="fa fa-dollor"></i>  View Payments</a> 
+  <a href="hierarchy-charts" class="w3-bar-item w3-button"><i class="fa fa-graph"></i>  Hierarchy Chart</a>
+  <a href="graphs" class="w3-bar-item w3-button"><i class="fa fa-line-chart" aria-hidden="true"></i>  Graphs</a>
+</div>
+
+<div style="margin-left:17%">
+
+    <div class="w3-container">
+        <div class="content">
+
+            @yield('content')
+
+        </div>
+    </div>
+
+</div>
+
+
+</div>
 </html>

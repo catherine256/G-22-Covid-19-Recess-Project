@@ -2,11 +2,7 @@
 
 @section('content')
 <br><br>
-<div style="margin-left:10%;" >
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Go Back TO Home Page</button> </a>
-</div><br>
-
+<div style="" >
   <h4 style="text-align:center;color:white"> GENERAL HOSPITALS LIST </h4>
   
   <table class="table table-bordered" style="background-color:white">

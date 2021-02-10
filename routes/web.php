@@ -18,6 +18,9 @@ use App\Http\Controllers\PaymentsController;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/common', function () {
+    return view('layouts.common');
+});
 Route::get('/registerhealthofficer', function () {
     return view('registerhealthofficer');
 });
@@ -90,3 +93,5 @@ Route::get('/officersRegional', [App\Http\Controllers\PendingController::class, 
 
 Route::get('/officersNational', [App\Http\Controllers\PendingController::class, 'officersNational'])->name('officersNational');
 Route::get('/covid_19_lists', [App\Http\Controllers\PatientsController::class,'index'])->name('covid_19_lists');
+
+Route::post('/officersRegional', [App\Http\Controllers\PendingController::class,'check_general_treated_patients'])->name('OfficersRegional');

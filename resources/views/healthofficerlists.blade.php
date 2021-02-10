@@ -2,10 +2,7 @@
 
 @section('content')
 <br><br>
-<div style="margin-left:10%">
-    <div class="pull-right">
-        <a href="home" title="Go back"><button class="btn btn-success">Go Back To Home Page</button> </a>
-    </div>
+<div style="">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">

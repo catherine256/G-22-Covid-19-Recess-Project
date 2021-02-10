@@ -3,9 +3,6 @@
 
 @section('content')
 <br><br>
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Back To Home</button> </a>
-</div>
 <br>
 <div class="">
   <h1 style="text-align:center; color:black">Hierachical Displays in different hospital classifications</h1>

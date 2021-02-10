@@ -2,10 +2,6 @@
 
 @section('content')
 <br><br>
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-light">Go Back Home</button> </a>
-</div>
-<br><br>
 <div style="text-align:center">
     <div class="col-md-12 mt-3">
        <h4 style="color:white;">REGIONAL COVID-19 HEALTH OFFICER LIST</h4>
