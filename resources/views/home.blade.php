@@ -74,7 +74,7 @@
     </div>
      @endif 
 
-    
+    <div> <img src="icons/dollars.png" alt="doll"> </div>
 
 <div style="margin-left:27%;">
 <i class='fas fa-briefcase-medical' style='font-size:100px;color:red; margin-left:30%'></i>
