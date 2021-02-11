@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Number of health officers:</strong>
+                    <strong>Number of patients Treated:</strong>
                     <input type="number" name="number_of_patients_treated" class="form-control" placeholder="number_of_patients_treated">
                 </div>
             </div>

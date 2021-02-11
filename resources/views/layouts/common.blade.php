@@ -130,6 +130,41 @@
             </div>
         </nav>
         </div> 
+<div class="w3-sidebar w3-bar-block w3-light-blue w3-card" style="width:15%">
+  <h1 style="background:black; color:white">DASHBOARD</h1>
+<a href="home" class="w3-bar-item w3-button"><i class="fa fa-home"></i>  Home</a>
+  @if(Auth::user()->role === 'Administrator')
+  <a href="registerhealthofficer" class="w3-bar-item w3-button"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i>&nbsp;  Register Health Officers</a> 
+  <a href="funds" class="w3-bar-item w3-button"><i class="fa fa-user"></i>  Register Donor Funds</a>
+  @endif
+  <a href="covid_19_lists" class="w3-bar-item w3-button"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i>&nbsp; Enrolled Patients Lists</a>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button"><i class="fas fa-briefcase-medical"></i>  Hospitals
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="hospital" class="w3-bar-item w3-button">General</a>
+      <a href="regional_hospital" class="w3-bar-item w3-button">Regional</a>
+      <a href="national_hospital" class="w3-bar-item w3-button">National</a>
+    </div>
+  </div> 
+
+  <div class="w3-dropdown-hover">
+    <button class="w3-button"><i class="fa fa-user"></i>  Officers Lists
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="healthofficerlists" class="w3-bar-item w3-button">Officers General</a>
+      <a href="officersRegional" class="w3-bar-item w3-button">oficers Regional</a>
+      <a href="officersNational" class="w3-bar-item w3-button">officers National</a>
+      <a href="pending_list" class="w3-bar-item w3-button">Pending officers</a>
+    </div>
+  </div>
+  <a href="payments" class="w3-bar-item w3-button"><i class="fa fa-dollor"></i>  View Payments</a> 
+  <a href="hierarchy-charts" class="w3-bar-item w3-button"><i class="fa fa-graph"></i>  Hierarchy Chart</a>
+  <a href="graphs" class="w3-bar-item w3-button"><i class="fa fa-line-chart" aria-hidden="true"></i>  Graphs</a>
+</div>
+
 <div style="margin-left:17%">
 
     <div class="w3-container">

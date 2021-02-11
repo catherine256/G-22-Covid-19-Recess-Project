@@ -32,6 +32,14 @@ class PendingController extends Controller
 
     //   }
 
+    protected function officers(){
+        return
+        $officers = DB::table('officers')
+        ->select('officers.name','officers.id','officers.username','officers.email',
+        'officers.district','officers.position','officers.number_of_patients_treated','officers.hospital_name',
+        )->get();
+    }
+
     protected function officers_referal_hospital(){
         return
         $officers_referal_hospital = DB::table('officer_regionals')
@@ -59,7 +67,7 @@ class PendingController extends Controller
         if(count($number_of_patients_treated)){
             $officer_total = DB::table('regionals')->min('number_of_health_officers');
             $hospital_details = DB::table('regionals')->where('number_of_health_officers', $this->general_officer_id)->get();
-            $officer_details = DB::table('hospitals')->where('id', '=', $this->general_officer_id)->get();
+            $officer_details = DB::table('officers')->where('id', '=', $this->general_officer_id)->get();
     
 
            //insert 

@@ -55,7 +55,7 @@
 
 <div class="container">
                 <a href="{{ url('/') }}">
-                   <H1 style="color:white; text-align:center; font-size:80px; color:red">COVID-19 CASE MANAGER</H1 > 
+                   <H1 style=" text-align:center; font-size:70px; color:red;">COVID-19 CASE MANAGER</H1 > 
                 </a>
 </div>
 

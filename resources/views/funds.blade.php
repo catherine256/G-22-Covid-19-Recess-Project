@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
@@ -13,11 +13,11 @@
     <form method="post" action="{{route('funds')}}">
     @csrf
     <div class="form-group">
-    <label>AMOUNT</label>
+    <label  style="color:white">AMOUNT</label>
     <input type="number" class="form-control" id="" placeholder="amount" name="amount">
   </div>
   <div class="form-group">
-    <label>DONOR</label>
+    <label  style="color:white">DONOR</label>
     <input type="text" class="form-control" id="" placeholder="donor" name="donor">
   </div>
   <div class="text-center"><button type="submit" class="btn btn-dark">Register Funds</button></div>

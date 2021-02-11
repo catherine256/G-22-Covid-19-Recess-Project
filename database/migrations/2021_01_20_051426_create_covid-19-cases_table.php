@@ -18,8 +18,8 @@ class CreateCovid19CasesTable extends Migration
             $table->string('patient_name');
             $table->string('gender');
             $table->string('category');
-            $table->string('officer_name');
-            $table->string('hospital_name');
+            $table->integer('officer_id');
+            $table->string('district');
             $table->timestamp('date_registered')->usecurrent();
         });
     }
