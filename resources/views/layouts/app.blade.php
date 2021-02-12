@@ -67,7 +67,7 @@
                     </ul>
 
                     
-                        @if(Auth::user()->role === 'Director')
+                      @if(Auth::user()->role === 'Director')
                                 <li class="nav-item dropdown">
     
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white">
@@ -98,17 +98,14 @@
                                         
     
                                         <li><h4><a class="w3-bar-item w3-button" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }} </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf</form>
-        </h4></li>   
- 
-    
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                           @csrf
+                                        </form>
+                                        </h4>
+                                    </li>   
                                     </div>
-                                
-                                 @endif
-                                
-                        @endguest
-                    </ul>
+                                 </li>
+                                 @endif  
                 </div>
             </div>
         </nav>
