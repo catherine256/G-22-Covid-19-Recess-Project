@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     protected function patientTotal(){
         return 
-        $patients_total =DB::table('covid-19-cases')->get();
+        $patients_total =DB::table('cases')->get();
    
     }
     public function index()

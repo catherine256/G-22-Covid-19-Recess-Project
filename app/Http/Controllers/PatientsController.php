@@ -9,7 +9,7 @@ class PatientsController extends Controller
 {
         public function index()
         {
-            $patients = DB::table('covid-19-cases')->get();
+            $patients = DB::table('cases')->get();
             return view('covid_19_lists', compact('patients'));
         }
     

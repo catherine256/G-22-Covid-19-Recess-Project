@@ -21,7 +21,8 @@
                 <th scope="col">PATIENT NAME</th>
                 <th scope="col">GENDER</th>
                 <th scope="col">STATUS</th>
-                <th scope="col">OFFICER NAME</th>
+                <th scope="col">DISTRICT</th>
+                <th scope="col">OFFICER USERNAME</th>
                 <th scope="col">HOSPITAL NAME</th>
                 <th scope="col">DATE REGISTERED</th>
             </tr>
@@ -32,8 +33,9 @@
                         <td>{{ $patient->patient_name }}</td>
                         <td>{{ $patient->gender }}</td>
                         <td>{{ $patient->category }}</td>
-                        <td>{{ $patient->officer_name }}</td>
-                        <td>{{ $patient->hospital_name }}</td>
+                        <td>{{ $patient->district }}</td>
+                        <td>{{ $patient->username }}</td>
+                        <td>{{ $patient->hospital }}</td>
                         <td>{{$patient->date_registered}}</td>
                       </tr>
                 @endforeach  

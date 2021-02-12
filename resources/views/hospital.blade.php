@@ -13,7 +13,6 @@
       <th scope="col">CATEGORY</th>
       <th scope="col">NUMBER OF HEALTH OFFICERS</th>
       <th scope="col">DATE_REGISTERED</th>
-      <th scope="col">ACTION<th>
     </tr>
     @foreach($hospitals as $hospital)
         <tr>
@@ -22,12 +21,6 @@
              <td>{{$hospital->category}}</td>
              <td>{{$hospital->number_of_health_officers}}</td>
              <td>{{$hospital->date}}</td>
-             <td>
-             @if (Auth::user()->role === 'Administrator')
-                <a href="/edit_hospital/{{$hospital->hospital_id}}"><button class="btn btn-primary">Edit</button></a> | 
-                <a href="/delete_hospital/{{$hospital->hospital_id}}"><button class="btn btn-danger">Delete</button></a>
-              @endif
-             </td>
           </tr>
         @endforeach
   </thead>
