@@ -25,6 +25,6 @@ class NationalController extends Controller
             'number_of_health_officers'=>$request->number_of_health_officers
 
         ]);
-        return back()->with('add_national', 'Hospital registered successfully');
+        return back()->with('add_national', 'Hospital at national registered successfully');
     }
 }
