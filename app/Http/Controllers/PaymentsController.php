@@ -27,7 +27,6 @@ class PaymentsController extends Controller
          else{
             $donor_money = DB::table('treasury')
             ->select('amount')->get();
-            // ->where('treasury_id', '=', 1)
             $this->default_month = 'date_declared';
             return $donor_money[0]->amount;
       
