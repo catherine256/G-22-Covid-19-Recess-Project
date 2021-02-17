@@ -83,7 +83,7 @@ Route::get('/regional_hospital', [App\Http\Controllers\RegionalController::class
 
 Route::get('graphs', [App\Http\Controllers\TreasurysController::class, 'showGraph'])->name('graphs');
 
- Route::get('hospital_graph', [App\Http\Controllers\HospitalController::class, 'hospitalGraph'])->name('hospital_graph');
+Route::get('hospital_graph', [App\Http\Controllers\HospitalController::class, 'hospitalGraph'])->name('hospital_graph');
 
 Route::get('/payments', [PaymentsController::class, 'index'])->name('payments');
 Route::post('/payments', [PaymentsController::class, 'store']);
@@ -96,3 +96,5 @@ Route::get('/officersNational', [App\Http\Controllers\PendingController::class, 
 Route::get('/covid_19_lists', [App\Http\Controllers\PatientsController::class,'index'])->name('covid_19_lists');
 
 Route::post('/officersRegional', [App\Http\Controllers\PendingController::class,'check_general_treated_patients'])->name('OfficersRegional');
+
+Route::get('percentage_change', [App\Http\Controllers\PatientsController::class, 'patientsGraph'])->name('percentage_change');

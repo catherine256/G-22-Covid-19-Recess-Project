@@ -12,5 +12,11 @@ class PatientsController extends Controller
             $patients = DB::table('cases')->get();
             return view('covid_19_lists', compact('patients'));
         }
+
+        public function patientsGraph()
+        {
+            $patients = DB::table('cases')->get();
+           return view('percentage_change',['patients' => $patients]);   
+        }
     
 }
