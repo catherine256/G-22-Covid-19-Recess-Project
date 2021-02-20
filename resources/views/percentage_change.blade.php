@@ -4,7 +4,7 @@
 <br><br>
 
 <div style="">
-<h2 style="text-align: center;">A bar graph showing treasury registered in a by Donors</h2>
+<h2 style="text-align: center;">A bar graph showing percentage change in enrollment figures</h2>
     <div class="container-fluid p-5">
     <div id="barchart_material" style="width: 100%; height: 500px;"></div>
     </div>
@@ -16,18 +16,18 @@
  
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['donor', 'amount'],
+            ['month', 'percentage_change'],
  
             @php
-              foreach($treasury as $treasurys) {
-                  echo "['".$treasurys->donor."', ".$treasurys->amount.",],";
+              foreach($patients as $patient) {
+                  echo "['".$patient->date_registered."', ".$patient->id.",],";
               }
             @endphp
         ]);
  
         var options = {
           chart: {
-            title: 'A bar graph showing amount and donor name:',
+            title: 'A graph showing percentage change in the enrollment figures',
           },
           bars: 'vertical'
         };

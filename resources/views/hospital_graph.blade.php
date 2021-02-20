@@ -27,8 +27,7 @@
  
         var options = {
           chart: {
-            title: 'Bar Graph | number_of_health_officers ',
-            subtitle: 'A graph showing the distribution of covid-19 health officers in a given hospital:',
+            title: 'A graph showing the distribution of covid-19 health officers in a given hospital: ',
           },
           bars: 'vertical'
         };

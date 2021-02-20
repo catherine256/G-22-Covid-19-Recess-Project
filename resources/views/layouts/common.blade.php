@@ -162,7 +162,16 @@
   </div>
   <a href="payments" class="w3-bar-item w3-button"><i class="fa fa-dollor"></i>  View Payments</a> 
   <a href="hierarchy-charts" class="w3-bar-item w3-button"><i class="fa fa-graph"></i>  Hierarchy Chart</a>
-  <a href="graphs" class="w3-bar-item w3-button"><i class="fa fa-line-chart" aria-hidden="true"></i>  Graphs</a>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button"><i class="fa fa-user"></i>  Graphs
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a href="graphs" class="w3-bar-item w3-button">Donor Money</a>
+      <a href="hospital_graph" class="w3-bar-item w3-button">Officers Distribution Regional</a>
+      <a href="percentage_change" class="w3-bar-item w3-button">Percentage change in enrollment</a>
+    </div>
+  </div>
 </div>
 
 <div style="margin-left:17%">
