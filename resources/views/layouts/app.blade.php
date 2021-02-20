@@ -10,6 +10,8 @@
     <title>covid-19 case manager</title>
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -34,13 +36,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
  
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="your-project-dir/font-css/LineIcons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <link rel="stylesheet" href="assests/chart.js/Chart.css">
  
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
 </head>
-<body class="w3-teal"  style="background-color:teal">
-    <div id="app">
+<body class="w3-teal">
+<div id="app">
       <div style="background-color:black">
         <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm">
             <div class="container">
@@ -61,15 +70,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (Route::has(''))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}" style="color:white">{{ __('Login') }}</a>
+                                    <a class="lining-up" href="{{ route('login') }}" style="color:white">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
+                            @if (Route::has(''))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}" style="color:white">{{ __('Register') }}</a>
+                                    <a class="lining-up" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -113,7 +122,7 @@
     
                                     </div>
                                 </li>
-                                 @endif
+                                 @endif    
                         @endguest
                     </ul>
                 </div>
@@ -121,9 +130,17 @@
         </nav>
         </div>
 
-        <main>
+<div style="margin-left:17%">
+
+    <div class="w3-container">
+        <div class="content">
             @yield('content')
-        </main>
+
+        </div>
     </div>
-</body>
+
+</div>
+
+
+</div>
 </html>

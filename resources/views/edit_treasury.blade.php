@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
-<div style="margin-left:10%">
+<div style="">
 <div class="pull-right">
   <a href="/funds" title="Go back"><button class="btn btn-success">Go Back</button> </a>
 </div>
@@ -16,11 +16,11 @@
     <input type="hidden" class="form-control" id="" name="treasury_id" value="{{$treasury->treasury_id}}">
   </div>
     <div class="form-group">
-    <label>AMOUNT</label>
+    <label  style="color:white">AMOUNT</label>
     <input type="number" class="form-control" id="" placeholder="amount" name="amount" value="{{$treasury->amount}}">
   </div>
   <div class="form-group">
-    <label>DONOR</label>
+    <label  style="color:white">DONOR</label>
     <input type="text" class="form-control" id="" placeholder="donor" name="donor" value="{{$treasury->donor}}">
   </div>
   <div class="text-center"><button type="submit" class="btn btn-primary">Edit</button></div>

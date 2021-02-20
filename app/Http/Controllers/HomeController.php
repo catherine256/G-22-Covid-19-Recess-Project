@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\patient;
+use App\Models\officer;
+use DB;
 
 class HomeController extends Controller
 {
@@ -21,8 +24,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    // public function index()
+    // {
+    //     return view('home');
+    // }
+    protected function officerTotal(){
+        return 
+        $officers_total =DB::table('officers')->get();
+   
+    }
+
+    protected function patientTotal(){
+        return 
+        $patients_total =DB::table('cases')->get();
+   
+    }
     public function index()
     {
-        return view('home');
+        $officers_total = $this->officerTotal();
+        $patients_total=$this->patientTotal();
+         return view('home',
+        [
+        'officers_total'=>$officers_total,
+        'patients_total'=>$patients_total,
+        ]);
     }
 }

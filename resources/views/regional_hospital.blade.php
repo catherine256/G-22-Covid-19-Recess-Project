@@ -1,11 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
-<div style="margin-left:10%; color:black;">
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Go Back</button> </a>
-</div>
+<div style="color:black;">
 @if (Auth::user()->role === 'Administrator')
 <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -42,7 +39,7 @@
     </form>
     @endif
     <br><br>
-    <h2 style="text-align:center">NATIONAL HOSPITALS LIST</h2>
+    <h2 style="text-align:center">REGIONAL HOSPITALS LIST</h2>
 
     <table class="table table-bordered" style="background-color:white">
   <thead class="thead-dark">

@@ -22,6 +22,7 @@ class CreateOfficerRegionalsTable extends Migration
             $table->string('position')->default('covid-19 health officer');
             $table->integer('number_of_patients_treated')->nullable();
             $table->string('hospital_name')->nullable();
+            $table->integer('hospital_id')->default(0);
             $table->string('upgrade')->nullable();
             $table->string('award')->default('0');
             $table->boolean('pending')->default(false);

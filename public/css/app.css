@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -155,7 +155,7 @@ sup {
 }
 
 a {
-  color: #3490dc;
+  color: teal;
   text-decoration: none;
   background-color: transparent;
 }
@@ -222,6 +222,8 @@ th {
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
+  color:teal;
+  font-weight:bold;
 }
 
 button {
@@ -542,6 +544,7 @@ pre code {
 .container-md,
 .container-sm {
   width: 100%;
+  
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -549,14 +552,14 @@ pre code {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container {
+  .ardontainer-sm, .container {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
     max-width: 720px;
-  }
+ }
 }
 @media (min-width: 992px) {
   .container-lg, .container-md, .container-sm, .container {
@@ -1095,6 +1098,7 @@ pre code {
   .col-md-8 {
     flex: 0 0 66.6666666667%;
     max-width: 66.6666666667%;
+    
   }
 
   .col-md-9 {
@@ -4314,10 +4318,12 @@ input[type=button].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color:#fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin-top: 50px;
+  
 }
 .card > hr {
   margin-right: 0;
@@ -4340,12 +4346,16 @@ input[type=button].btn-block {
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
   border-top: 0;
+
 }
 
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem;
+  padding: 100px;
+  height: 350px;
+  
+  
 }
 
 .card-title {
@@ -4371,8 +4381,14 @@ input[type=button].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color:white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  text-align: center;
+  color: teal;
+  font-weight: bold;
+  font-size: 30px;
+  
+  
 }
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
@@ -7415,7 +7431,8 @@ button.bg-dark:focus {
 }
 
 .w-100 {
-  width: 100% !important;
+  width: 75% !important;
+  
 }
 
 .w-auto {
@@ -9970,4 +9987,19 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.lining-up li{
+  display: inline;
+  list-style-type: none;
+  font-weight: bold;
+  margin-right: 10px;  
+}
+
+
+.lining-up ul{
+  
+  list-style-type: none;
+  font-weight: bold;
+  margin-left: 150px;  
 }

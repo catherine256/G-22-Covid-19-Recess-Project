@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Models\Hospitals;
+use App\Models\hospitals;
 use  Illuminate\Support\Facades\Validator;
 
 
@@ -54,6 +54,7 @@ class OfficerController extends Controller
             'position'=>$request->position,
             'number_of_patients_treated'=>$request->number_of_patients_treated,
             'hospital_name'=>$generalHospital[0]->name,
+            'hospital_id'=>$generalHospital[0]->hospital_id,
 
 
         ]);

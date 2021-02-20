@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
-<div style="margin-left:10%; color:black;">
+<div style="color:black;">
 <div class="pull-right">
   <a href="hospital" title="Go back"><button class="btn btn-success">Go Back</button> </a>
 </div>

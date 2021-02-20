@@ -26,9 +26,7 @@ class PaymentsController extends Controller
          }
          else{
             $donor_money = DB::table('treasury')
-            ->select('amount')
-            ->where('treasury_id', '=', 1)->
-            get();
+            ->select('amount')->get();
             $this->default_month = 'date_declared';
             return $donor_money[0]->amount;
       
@@ -131,7 +129,7 @@ class PaymentsController extends Controller
           where position = ?", ['superintendent']);
           DB::update("update officer_regionals set monthly_allowance = $senior_total_salary
           where position = ?", ['senior covid-19 health officer']);
-          DB::update("update officers set monthly_allowance = $officer_total_general_salary
+          DB::update("update officers set monthly_allowance = $officer_total_salary
           where position = ?", ['covid-19 health officer']);
           DB::update("update officers set monthly_allowance = $officer_total_general_salary
           where position = ?", ['head covid-19 health officer']); 
@@ -266,7 +264,7 @@ class PaymentsController extends Controller
           where position = ?", ['superintendent']);
           DB::update("update officer_regionals set monthly_allowance = $senior_total_salary
           where position = ?", ['senior covid-19 health officer']);
-          DB::update("update officers set monthly_allowance = $officer_total_general_salary
+          DB::update("update officers set monthly_allowance = $officer_total_salary
           where position = ?", ['covid-19 health officer']);
           DB::update("update officers set monthly_allowance = $officer_total_general_salary
           where position = ?", ['head covid-19 health officer']); 

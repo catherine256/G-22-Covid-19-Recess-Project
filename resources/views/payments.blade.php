@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br>
-<div class="pull-right">
-  <a href="home" title="Go back"><button class="btn btn-success">Back To Home</button> </a>
-</div><br>
 <style>
     span.invalid-feedback{
         text-align: center !important;

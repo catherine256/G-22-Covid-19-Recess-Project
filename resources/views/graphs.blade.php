@@ -1,14 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
 
-<div style="margin-left:10%">
-<div class="pull-right">
-  <a href="home" title="Go Back TO Home"><button class="btn btn-success">Go Back</button> </a>
-</div>
-
-<h2 style="text-align: center;">A bar graph showing treasury registered in a given month</h2>
+<div style="">
+<h2 style="text-align: center;">A bar graph showing treasury registered in a by Donors</h2>
     <div class="container-fluid p-5">
     <div id="barchart_material" style="width: 100%; height: 500px;"></div>
     </div>
@@ -45,5 +41,4 @@
   <a href="hospital_graph" title="check hospital graph"><button class="btn btn-success">Hospital Graph</button> </a>
 </div>
 </div>
-
 @endsection

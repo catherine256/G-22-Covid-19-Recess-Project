@@ -1,13 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.common')
 
 @section('content')
 <br><br>
 
-<div style="margin-left:10%">
-<div class="pull-right">
-  <a href="home" title="Go Back TO Home"><button class="btn btn-success">Go Back</button> </a>
-</div>
-
+<div style="">
 <h2 style="text-align: center;">A bar graph showing the distribution of covid-19 health officers in given hospitals</h2>
     <div class="container-fluid p-5">
     <div id="barchart_material" style="width: 100%; height: 500px;"></div>
